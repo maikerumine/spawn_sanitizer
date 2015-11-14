@@ -3,7 +3,7 @@ Minetest 0.4 mod: spawn_sanitizer
 
 License of source code:
 -----------------------
-Andrey's mod for minetest
+Andrey's mod for minetest modified to clean more items from spawn like steel doors, chests, gravel, sand, vending, etc. by maikerumine.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by

@@ -1,6 +1,6 @@
 -- Minetest 0.4 mod: spawn_sanitizer
 -- Bones are eventually removed from spawn.
--- 
+--
 -- See README.txt for licensing and other information.
 
 spawn_sanitizer = {}
@@ -20,7 +20,7 @@ minetest.register_abm({
 			local node=minetest.get_node(pos)
 			local nodeinventory = minetest.get_meta(pos):get_inventory()
 			if  node.param2 ~= facedir_for_bones then
-				if nodeinventory:is_empty("main") then 
+				if nodeinventory:is_empty("main") then
 					node.param2=facedir_for_bones
 					minetest.swap_node(pos, node)
 				end
@@ -61,13 +61,13 @@ minetest.register_abm({
 	interval = 3000,
 	chance = 8,
 	action = function(pos)
-		if pos.x>-40 and pos.x<40 and pos.z>-40 and pos.z<40 and pos.y>-45 then		
+		if pos.x>-40 and pos.x<40 and pos.z>-40 and pos.z<40 and pos.y>-45 then
 			local owner = minetest.get_meta(pos):get_string("owner")
 			if owner=="" then
 				local node=minetest.get_node(pos)
 				local nodeinventory = minetest.get_meta(pos):get_inventory()
 				if  node.param2 == facedir_for_bones then
-					if nodeinventory:is_empty("main") then 
+					if nodeinventory:is_empty("main") then
 						minetest.remove_node(pos)
 					end
 				end
@@ -77,11 +77,11 @@ minetest.register_abm({
 })
 
 minetest.after(75, function(dtime)
-	
+
 	if spawn_sanitizer.cleaned==true then
 		return
 	end
-	
+
 	local positions1 = minetest.find_nodes_in_area(
 		{x=-20, y=-4, z=-20},
 		{x=20, y=1, z=20},
@@ -117,23 +117,23 @@ minetest.after(75, function(dtime)
 	for _, pos in ipairs(positions5) do
 		minetest.set_node(pos, {name="default:cobble"})
 	end
-	
+
 	local positions6 = minetest.find_nodes_in_area(
 		{x=-19, y=2, z=-19},
 		{x=19, y=70, z=19},
-		{"default:cobble", "default:stone", "default:water_source", "default:lava_source"})
+		{"default:cobble", "default:water_source", "default:lava_source"})
 	for _, pos in ipairs(positions6) do
 		minetest.set_node(pos, {name="air"})
 	end
-	
+
 	local positions7 = minetest.find_nodes_in_area(
-		{x=-50, y=-50, z=-50},
-		{x=50, y=50, z=50},
+		{x=-20, y=-50, z=-20},
+		{x=20, y=50, z=20},
 		{"default:furnace"})
 	for _, pos in ipairs(positions7) do
 		minetest.set_node(pos, {name="air"})
 	end
-	
+
 	local positions8 = minetest.find_nodes_in_area(
 		{x=-3, y=-3, z=-3},
 		{x=3, y=0, z=3},
@@ -141,7 +141,7 @@ minetest.after(75, function(dtime)
 	for _, pos in ipairs(positions8) do
 		minetest.set_node(pos, {name="air"})
 	end
-	
+
 	local positions9 = minetest.find_nodes_in_area(
 		{x=-2, y=1, z=-2},
 		{x=2, y=2, z=2},
@@ -149,8 +149,104 @@ minetest.after(75, function(dtime)
 	for _, pos in ipairs(positions9) do
 		minetest.set_node(pos, {name="air"})
 	end
-	
-			
+
+	local positions10 = minetest.find_nodes_in_area(
+		{x=-20, y=1, z=-20},
+		{x=20, y=20, z=20},
+		{"default:ice"})
+	for _, pos in ipairs(positions10) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions11 = minetest.find_nodes_in_area(
+		{x=-18, y=-2, z=-18},
+		{x=18, y=20, z=18},
+		{"default:chest_locked"})
+	for _, pos in ipairs(positions11) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions12 = minetest.find_nodes_in_area(
+		{x=-20, y=-10, z=-20},
+		{x=20, y=20, z=20},
+		{"default:jungletree"})
+	for _, pos in ipairs(positions12) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions13 = minetest.find_nodes_in_area(
+		{x=-20, y=-10, z=-20},
+		{x=20, y=20, z=20},
+		{"vendor:vendor"})
+	for _, pos in ipairs(positions13) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions14 = minetest.find_nodes_in_area(
+		{x=-20, y=-10, z=-20},
+		{x=20, y=20, z=20},
+		{"vendor:depositor"})
+	for _, pos in ipairs(positions14) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions15 = minetest.find_nodes_in_area(
+		{x=-20, y=-20, z=-20},
+		{x=20, y=20, z=20},
+		{"doors:door_steel_t_1"})
+	for _, pos in ipairs(positions15) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions16 = minetest.find_nodes_in_area(
+		{x=-20, y=-20, z=-20},
+		{x=20, y=20, z=20},
+		{"doors:door_steel_b_1"})
+	for _, pos in ipairs(positions16) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions17 = minetest.find_nodes_in_area(
+		{x=-20, y=-20, z=-20},
+		{x=20, y=20, z=20},
+		{"doors:door_steel_t_2"})
+	for _, pos in ipairs(positions17) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions18 = minetest.find_nodes_in_area(
+		{x=-20, y=-20, z=-20},
+		{x=20, y=20, z=20},
+		{"doors:door_steel_b_2"})
+	for _, pos in ipairs(positions18) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+
+	local positions18 = minetest.find_nodes_in_area(
+		{x=-20, y=1, z=-20},
+		{x=20, y=20, z=20},
+		{"bones:bones"})
+	for _, pos in ipairs(positions18) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions18 = minetest.find_nodes_in_area(
+		{x=-20, y=1, z=-20},
+		{x=20, y=20, z=20},
+		{"default:gravel"})
+	for _, pos in ipairs(positions18) do
+		minetest.set_node(pos, {name="air"})
+	end
+
+	local positions18 = minetest.find_nodes_in_area(
+		{x=-20, y=1, z=-20},
+		{x=20, y=20, z=20},
+		{"default:sand"})
+	for _, pos in ipairs(positions18) do
+		minetest.set_node(pos, {name="air"})
+	end
+
 	for z1=-27, -16 do
 		minetest.set_node({x=37, y=2, z=z1}, {name="default:rail"})
         minetest.set_node({x=37, y=1, z=z1}, {name="default:stonebrick"})
@@ -200,7 +296,7 @@ local old_node_place = minetest.item_place
 function minetest.item_place(itemstack, placer, pointed_thing)
 	if itemstack:get_definition().type == "node" then
 		local ok=true
-		if itemstack:get_name() == "protector_mese:protect" then
+		if itemstack:get_name() == "protector:protect" then
 			local pos = pointed_thing.above
 			if not placer or not placer.get_player_name then return false end
 			if pos.x>-21 and pos.x<21 and pos.z>-21 and pos.z<21 then
@@ -211,13 +307,13 @@ function minetest.item_place(itemstack, placer, pointed_thing)
 					ok=false
 				end
 			end
-		end 
+		end
 		if ok == true then
 			return old_node_place(itemstack, placer, pointed_thing)
 		else
 			return
-		end	
-	end	
+		end
+	end
 	return old_node_place(itemstack, placer, pointed_thing)
 end
 
@@ -225,7 +321,7 @@ end
 local old_bucket_lava_on_place=minetest.registered_craftitems["bucket:bucket_lava"].on_place
 minetest.registered_craftitems["bucket:bucket_lava"].on_place=function(itemstack, placer, pointed_thing)
 	local pos = pointed_thing.above
-    if pos.x>-35 and pos.x<35 and pos.y>16 and pos.z>-35 and pos.z<35 then
+    if pos.x>-35 and pos.x<35 and pos.y>56 and pos.z>-35 and pos.z<35 then
         minetest.log("action", "Player warned for placing lava!")
         minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z}, {name="tnt:tnt_burning"})
         boom({x=pos.x, y=pos.y-1, z=pos.z}, math.random(1, 3))
